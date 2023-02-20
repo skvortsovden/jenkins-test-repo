@@ -1,4 +1,4 @@
-  #!/usr/bin/groovy
+#!/usr/bin/groovy
 
 import groovy.text.markup.MarkupTemplateEngine
 
