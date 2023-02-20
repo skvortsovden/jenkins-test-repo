@@ -1,0 +1,67 @@
+footer() {
+    div("class": "container details") {
+        div("class": "nav") {
+            newLine()
+        }
+        div("class": "cadre") {
+            div("class": "container-article") {
+                div("class": "app-container") {
+                    div("class": "statistics") {
+                        table('Report', "class": "statistics-in") {
+                            thead() {
+                                tr() {
+                                    th("colspan": "7","class": "header") {
+                                        span("Metrics")
+                                    }
+                                }
+                                tr() {
+                                    th("class": "header") {
+                                        span("component")
+                                    }
+                                    for(key in model.results.values().first().keySet()) {
+                                        th("class": "header") {
+                                            span(key)
+                                        }
+                                    }
+                                }
+                            }
+                            tbody() {
+                                model.results.each {element -> 
+                                    tr() {
+                                        td(element.key)
+                                        element.value.each{el ->
+                                            td(el.value)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        table('Report', "class": "statistics-in") {
+                            tr() {
+                                th("colspan": "5","class": "header") {
+                                    span("Summary")
+                                }
+                            }
+                            tr() {
+                                model.each{ element ->
+                                    if(element.key != 'results') {
+                                        th("class": "header") {
+                                            span(element.key)
+                                        }
+                                    }
+                                }
+                            }
+                            tr() {
+                                model.each{ element ->
+                                    if(element.key != 'results') {
+                                        td(element.value)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
